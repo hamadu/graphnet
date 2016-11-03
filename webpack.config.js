@@ -9,6 +9,9 @@ module.exports = {
     path: __dirname + '/dist/js',
     filename: "app.js"
   },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin()
+  ],
   devtool: "source-map",
   resolve: {
     extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
