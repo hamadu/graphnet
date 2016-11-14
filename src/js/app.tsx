@@ -3,4 +3,4 @@ import * as ReactDOM from "react-dom";
 
 import { World } from "./components/World";
 
-ReactDOM.render(<World />, document.getElementById("app"));
+ReactDOM.render(<World width={300} height={300} n={30} />, document.getElementById("app"));
