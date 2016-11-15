@@ -20,10 +20,11 @@ export class VertexData {
   }
 
   move(world: World) {
+    const padding = 2;
     const toX = this.x + this.vx;
     const toY = this.y + this.vy;
-    const toVX = (toX < 0 || toX >= world.props.width)  ? -this.vx : this.vx;
-    const toVY = (toY < 0 || toY >= world.props.height) ? -this.vy : this.vy;
+    const toVX = (toX - padding < 0 || toX + padding >= world.props.width)  ? -this.vx : this.vx;
+    const toVY = (toY - padding < 0 || toY + padding >= world.props.height) ? -this.vy : this.vy;
 
     return new VertexData(toX, toY, toVX, toVY);
   }

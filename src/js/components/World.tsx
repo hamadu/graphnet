@@ -17,11 +17,19 @@ export class World extends React.Component<WorldProps, WorldState> {
     }
     this.state = { vertice: vs, edges: [] };
 
+    this.tick = this.tick.bind(this);
     this.move = this.move.bind(this);
-    setInterval(this.move, 20);
-
     this.connect = this.connect.bind(this);
-    setInterval(this.connect, 200);
+  }
+
+  componentDidMount() {
+    setTimeout(this.tick, 100);
+  }
+
+  tick() {
+    this.move();
+    this.connect();
+    window.requestAnimationFrame(this.tick);
   }
 
   move() {
