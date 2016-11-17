@@ -58,21 +58,17 @@ export class World extends React.Component<WorldProps, WorldState> {
   render() {
     const v = this.state.vertice.map(v => <Vertex x={v.x} y={v.y} r={3} />)
     const n = this.state.vertice.length;
-
-    let edges: JSX.Element[] = [];
-    for (let ei = 0 ; ei < this.state.edges.length ; ei++) {
-      const i = this.state.edges[ei][0];
-      const j = this.state.edges[ei][1];
-      const v1 = this.state.vertice[i];
-      const v2 = this.state.vertice[j];
-      edges.push(<Line x1={v1.x} y1={v1.y} x2={v2.x} y2={v2.y} />)
-    }
+    const e = this.state.edges.map(vids => {
+      const v1 = this.state.vertice[vids[0]];
+      const v2 = this.state.vertice[vids[1]];
+      <Line x1={v1.x} y1={v1.y} x2={v2.x} y2={v2.y} />
+    });
 
     return (
       <div>
         <h1>Hello</h1>
         <svg width={this.props.width} height={this.props.height}>
-          {edges}
+          {e}
           {v}
         </svg>
       </div>
